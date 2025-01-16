@@ -6,6 +6,8 @@ import Dashboard from './pages/admin/dashboard/Dashboard';
 import NoPage from './pages/nopage/NoPage';
 import MyState from './context/data/myState';
 import { Route, Routes } from 'react-router-dom';
+import Login from './pages/registration/Login';
+import Signup from './pages/registration/Signup';
 function App() {
   return (
     <MyState>
@@ -14,6 +16,8 @@ function App() {
         <Route path="/order" element={<Order />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login></Login>} />
+        <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/*" element={<NoPage />} />
       </Routes>
     </MyState>
