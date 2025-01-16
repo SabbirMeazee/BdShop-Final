@@ -1,7 +1,8 @@
 import React from 'react'
 import MyContext from './myContext';
 
-function MyState(props) {
+
+function myState(props) {
     const state = {
         name: "Kamal Nayan",
         class: "9 C"
@@ -13,4 +14,4 @@ function MyState(props) {
     )
 }
 
-export default MyState
+export default myState
