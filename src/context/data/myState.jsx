@@ -3,11 +3,7 @@ import MyContext from './myContext';
 
 
 function myState(props) {
-    // const state = {
-    //     name: "Kamal Nayan",
-    //     class: "9 C"
-    // }
-    // const myColor = "red"
+    const [loading, setLoading] = useState(false)
     const [mode, setMode] = useState('light');
 
     const toggleMode = () => {
@@ -22,7 +18,7 @@ function myState(props) {
         }
     }
     return (
-        <MyContext.Provider value={{ mode, toggleMode }}>
+        <MyContext.Provider value={{ mode, toggleMode, loading, setLoading }}>
             {props.children}
         </MyContext.Provider>
     )

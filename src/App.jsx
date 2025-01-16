@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './pages/registration/Login';
 import Signup from './pages/registration/Signup';
 import ProductInfo from './pages/productInfo/ProductInfo';
+import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <MyState>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/productinfo/:id" element={<ProductInfo></ProductInfo>} />
         <Route path="/*" element={<NoPage />} />
       </Routes>
+      <ToastContainer></ToastContainer>
     </MyState>
 
 
