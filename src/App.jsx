@@ -4,18 +4,21 @@ import Order from './pages/order/Order';
 import Cart from './pages/cart/Cart';
 import Dashboard from './pages/admin/dashboard/Dashboard';
 import NoPage from './pages/nopage/NoPage';
-import { Route, Router, Routes } from 'react-router-dom';
+import MyState from './context/data/myState';
+import { Route, Routes } from 'react-router-dom';
 function App() {
   return (
-    <Router>
+    <MyState>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<Home></Home>}></Route>
         <Route path="/order" element={<Order />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/*" element={<NoPage />} />
       </Routes>
-    </Router>
+    </MyState>
+
+
   )
 }
 export default App

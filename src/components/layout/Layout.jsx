@@ -7,11 +7,9 @@ function Layout({ children }) {
         <div>
             <Navbar>
             </Navbar>
-
             <div className="content">
                 {children}
             </div>
-
             <Footer>
             </Footer>
 
