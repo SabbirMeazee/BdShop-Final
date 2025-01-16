@@ -8,6 +8,7 @@ import MyState from './context/data/myState';
 import { Route, Routes } from 'react-router-dom';
 import Login from './pages/registration/Login';
 import Signup from './pages/registration/Signup';
+import ProductInfo from './pages/productInfo/ProductInfo';
 function App() {
   return (
     <MyState>
@@ -15,9 +16,11 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path="/order" element={<Order />} />
         <Route path="/cart" element={<Cart />} />
+
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/signup" element={<Signup></Signup>} />
+        <Route path="/productinfo/:id" element={<ProductInfo></ProductInfo>} />
         <Route path="/*" element={<NoPage />} />
       </Routes>
     </MyState>
