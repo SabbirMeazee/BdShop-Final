@@ -99,21 +99,7 @@ function MyState(props) {
     const edithandle = (item) => {
         setProducts(item)
     }
-    // update product
-    const updateProduct = async (item) => {
-        setLoading(true)
-        try {
-            await setDoc(doc(fireDB, "products", products.id), products);
-            toast.success("Product Updated successfully")
-            getProductData();
-            setLoading(false)
-            window.location.href = '/dashboard'
-        } catch (error) {
-            setLoading(false)
-            console.log(error)
-        }
-        setProducts("")
-    }
+
 
     const deleteProduct = async (item) => {
 
@@ -129,7 +115,7 @@ function MyState(props) {
         }
     }
     return (
-        <MyContext.Provider value={{ mode, toggleMode, loading, setLoading, products, setProducts, product, addProduct, edithandle, updateProduct, deleteProduct }}>
+        <MyContext.Provider value={{ mode, toggleMode, loading, setLoading, products, setProducts, product, addProduct, edithandle, deleteProduct }}>
             {props.children}
         </MyContext.Provider>
     )
