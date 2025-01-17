@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import MyContext from './myContext';
-import { Timestamp, addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { onSnapshot, QuerySnapshot, orderBy, query } from 'firebase/firestore';
 import { toast } from 'react-toastify'
 import { fireDB } from '../../firebase/FirebaseConfig';
+import { addDoc, collection, CollectionReference, Timestamp } from 'firebase/firestore/lite';
 
 
 function myState(props) {
@@ -42,13 +43,19 @@ function myState(props) {
         if (products.title == null || products.price == null || products.imageUrl == null || products.category == null || products.description == null) {
             return toast.error('Please fill all fields')
         }
-        const productRef = CollectionReference(fireDB, "products")
+        const productRef = collection(fireDB, "products")
         setLoading(true)
         try {
             await addDoc(productRef, products)
             toast.success("Product Add successfully")
-            getProductData()
-            closeModal()
+
+            setTimeout(() => {
+                window.location.href = '/dashboard'
+            }, 800);
+
+
+            getProductData();
+            closeModal();
             setLoading(false)
         } catch (error) {
             console.log(error)
@@ -58,12 +65,12 @@ function myState(props) {
     }
     const [product, setProduct] = useState([]);
 
-    // ****** get product
+    //  get product
     const getProductData = async () => {
         setLoading(true)
         try {
             const q = query(
-                collection(fireDb, "products"),
+                collection(fireDB, "products"),
                 orderBy("time"),
                 // limit(5)
             );
@@ -73,11 +80,11 @@ function myState(props) {
                     productsArray.push({ ...doc.data(), id: doc.id });
                 });
                 setProduct(productsArray)
-                setLoading(false);
+                // setLoading(false);
             });
             return () => data;
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             setLoading(false)
         }
     }
@@ -86,7 +93,7 @@ function myState(props) {
         getProductData();
     }, []);
     return (
-        <MyContext.Provider value={{ mode, toggleMode, loading, setLoading, products, setProducts, addProduct }}>
+        <MyContext.Provider value={{ mode, toggleMode, loading, setLoading, products, setProducts, product, addProduct }}>
             {props.children}
         </MyContext.Provider>
     )
